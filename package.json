@@ -1,0 +1,23 @@
+{
+    "name": "MMM-ScriptSchedule",
+    "version": "1.0.0",
+    "description": "MagicMirror module to run external commands on cron schedules",
+    "license": "MIT",
+    "main": "MMM-ScriptSchedule.js",
+    "author": "Rich Alberth",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ralberth/MMM-ScriptSchedule"
+    },
+    "keywords": [
+        "MagicMirror",
+        "module",
+        "volume",
+        "mute",
+        "cron"
+    ],
+    "dependencies": {
+        "cron": "latest",
+        "npm": "^6.4.1"
+    }
+}

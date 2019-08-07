@@ -90,7 +90,7 @@ var config = {
                     {
                         schedule: "0 16 * * 1-5",
                         command: "amixer set Master '100%'",
-                        imageurl: "file:///home/joeuser/full_volume.png"
+                        imageurl: "http://myserver.com/images/full_volume.png"
                     }
                 ]
             }

@@ -16,21 +16,31 @@ Module.register("MMM-ScriptScheduler", {
 
 
     getDom: function() {
-        var iconDiv = document.createElement("div");
+        var imageDiv = document.createElement("div");
         this.config.schedules.forEach(function(schedule, index) {
-            var icon = document.createElement("span");
-            icon.id = "scriptsched_" + index;
-            icon.className = "fa-stack fa-lg";
-            icon.style.display = "none";
-            icon.style.margin = "20px";
-            icon.style.color = schedule.color;
             if (schedule.icon) {
-                icon.innerHTML = "<i class='fa fa-circle fa-stack-2x'></i>" +
-                                 "<i class='fa fa-" + schedule.icon + " fa-fw fa-stack-1x fa-inverse'></i>";
+                var icon = document.createElement("span");
+                icon.id = "scriptsched_" + index;
+                icon.className = "fa-stack fa-lg";
+                icon.style.display = "none";
+                icon.style.margin = "20px";
+                icon.style.color = schedule.color;
+                if (schedule.icon) {
+                    icon.innerHTML = "<i class='fa fa-circle fa-stack-2x'></i>" +
+                                    "<i class='fa fa-" + schedule.icon + " fa-fw fa-stack-1x fa-inverse'></i>";
+                }
+                imageDiv.appendChild(icon);
+            } else if (schedule.imageurl) {
+                var img = document.createElement("img");
+                img.id = "scriptsched_" + index;
+                img.src = schedule.imageurl;
+                img.style.display = "none";
+                img.style.margin = "20px";
+
+                imageDiv.appendChild(img);
             }
-            iconDiv.appendChild(icon);
         });
-        return iconDiv;
+        return imageDiv;
     },
 
 
@@ -48,14 +58,14 @@ Module.register("MMM-ScriptScheduler", {
         case "UPDATE":
             console.log("update: " + JSON.stringify(payload, null, 3));
             for (var i = 0; i < this.config.schedules.length; i++)
-                this.setIconVisible(i, false);
-            this.setIconVisible(payload.index, true);
+                this.setImageVisible(i, false);
+            this.setImageVisible(payload.index, true);
             break;
         }
     },
 
 
-    setIconVisible: function(index, shouldBeVisible) {
+    setImageVisible: function(index, shouldBeVisible) {
         var id = "scriptsched_" + index;
         var span = document.getElementById(id);
         span.style.display = shouldBeVisible ? "block" : "none";

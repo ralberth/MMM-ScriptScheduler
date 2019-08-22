@@ -56,7 +56,7 @@ Module.register("MMM-ScriptScheduler", {
     socketNotificationReceived: function(notification, payload) {
         switch(notification) {
         case "UPDATE":
-            console.log("update: " + JSON.stringify(payload, null, 3));
+            //console.log("update: " + JSON.stringify(payload, null, 3));
             for (var i = 0; i < this.config.schedules.length; i++)
                 this.setImageVisible(i, false);
             this.setImageVisible(payload.index, true);
@@ -68,6 +68,7 @@ Module.register("MMM-ScriptScheduler", {
     setImageVisible: function(index, shouldBeVisible) {
         var id = "scriptsched_" + index;
         var span = document.getElementById(id);
-        span.style.display = shouldBeVisible ? "block" : "none";
+        if (!!span) // may not be a span if no imageurl or icon in config.js for this schedule
+            span.style.display = shouldBeVisible ? "block" : "none";
     }
 });

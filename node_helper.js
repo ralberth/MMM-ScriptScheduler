@@ -25,11 +25,16 @@ module.exports = NodeHelper.create({
 
             this.cronJobs = payload.schedules.map(function(schedCfg, indx) {
                 var cronObj = new CronJob(schedCfg.schedule, function() {
-                    exec(schedCfg.command, function(error, stdout, stderr) {
-                        if (stdout) console.log(stdout);
-                        if (stderr) console.log(stderr);
+                    if (!!schedCfg.command) {
+                        exec(schedCfg.command, function(error, stdout, stderr) {
+                            if (stdout) console.log(stdout);
+                            if (stderr) console.log(stderr);
+                            me.sendSocketNotification("UPDATE", { index: indx });
+                        });
+                    } else {
+                        // no command in config.js, just trigger the update to change screen icon
                         me.sendSocketNotification("UPDATE", { index: indx });
-                    });
+                    }
                 });
                 cronObj.start();
                 console.log("New sched #" + indx + ": " + cronObj.cronTime + " run " + schedCfg.command);

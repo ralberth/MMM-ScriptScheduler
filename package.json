@@ -17,7 +17,7 @@
         "cron"
     ],
     "dependencies": {
-        "cron": "latest",
-        "npm": "^6.4.1"
+        "cron": "^1.7.2",
+        "npm": "^6.12.0"
     }
 }

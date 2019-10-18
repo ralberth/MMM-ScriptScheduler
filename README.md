@@ -140,6 +140,18 @@ imageurl: "/modules/mystuff/bright.png"
 ```
 
 
+## Broadcast Notifications
+
+ScriptScheduler responds to certain broadcast messages sent from other modules via the `this.sendNotification()` function.
+
+| **Label**                   | **Payload**        | **Description**    | **Example**                                         |
+|-----------------------------|--------------------|--------------------|-----------------------------------------------------|
+| `SCRIPTSCHEDULER_ALL_OFF`   |                    | Turn off all icons | `this.sendNotification("SCRIPTSCHEDULER_ALL_OFF");` |
+| `SCRIPTSCHEDULER_SHOW_ICON` | `{ "index": "4" }` | Turn off any existing icons and turn on an icon from the 0-based index | `this.sendNotification("SCRIPTSCHEDULER_ALL_OFF", { index: 4 });` |
+
+These don't invoke any of the actual scripts you have configured.  They simply change the icon displayed on the screen.
+
+
 ## Known Problems
 
 1. This module can't display two icons at once, it's built to handle a single icon at a time.

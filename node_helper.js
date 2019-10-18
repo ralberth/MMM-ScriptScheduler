@@ -5,10 +5,13 @@
  * Node Helper: MMM-ScriptScheduler
  * MIT Licensed.
  */
-
+console.log("!! 1");
 var NodeHelper = require("node_helper");
+console.log("!! 2");
 var CronJob = require("cron").CronJob;
+console.log("!! 3");
 var exec = require('child_process').exec;
+console.log("!! 4");
 
 
 module.exports = NodeHelper.create({

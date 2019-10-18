@@ -49,6 +49,15 @@ Module.register("MMM-ScriptScheduler", {
         case "DOM_OBJECTS_CREATED":
             this.sendSocketNotification("SCHEDULE", this.config);
             break;
+        case "SCRIPTSCHEDULER_ALL_OFF":
+            for (var i = 0; i < this.config.schedules.length; i++)
+                this.setImageVisible(i, false);
+            break;
+        case "SCRIPTSCHEDULER_SHOW_ICON":
+            for (var i = 0; i < this.config.schedules.length; i++)
+                this.setImageVisible(i, false);
+            this.setImageVisible(payload.index, true);
+            break;
         }
     },
 
@@ -56,7 +65,6 @@ Module.register("MMM-ScriptScheduler", {
     socketNotificationReceived: function(notification, payload) {
         switch(notification) {
         case "UPDATE":
-            //console.log("update: " + JSON.stringify(payload, null, 3));
             for (var i = 0; i < this.config.schedules.length; i++)
                 this.setImageVisible(i, false);
             this.setImageVisible(payload.index, true);

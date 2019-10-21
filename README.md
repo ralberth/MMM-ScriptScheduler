@@ -147,7 +147,7 @@ ScriptScheduler responds to certain broadcast messages sent from other modules v
 | **Label**                   | **Payload**        | **Description**    | **Example**                                         |
 |-----------------------------|--------------------|--------------------|-----------------------------------------------------|
 | `SCRIPTSCHEDULER_ALL_OFF`   |                    | Turn off all icons | `this.sendNotification("SCRIPTSCHEDULER_ALL_OFF");` |
-| `SCRIPTSCHEDULER_SHOW_ICON` | `{ "index": "4" }` | Turn off any existing icons and turn on an icon from the 0-based index | `this.sendNotification("SCRIPTSCHEDULER_ALL_OFF", { index: 4 });` |
+| `SCRIPTSCHEDULER_SHOW_ICON` | `{ "index": "4" }` | Turn off any existing icons and turn on an icon from the 0-based index | `this.sendNotification("SCRIPTSCHEDULER_SHOW_ICON", { index: 4 });` |
 
 These don't invoke any of the actual scripts you have configured.  They simply change the icon displayed on the screen.
 
